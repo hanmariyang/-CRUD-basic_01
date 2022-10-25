@@ -1,12 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로그인</title>
+  <link rel="icon" href=""/>
+
+  <title>로그인</title>
 </head>
+
 <body>
-    <h1>로그인 페이지 입니디ㅏ.</h1>
+  <!-- (start)accounts - login 영역 -->
+    <form action="{% url 'accounts:login' %}" method="POST">
+      {% csrf_token %}
+      <div style="display: flex; flex-direction: column;">
+          <input type="text" id="id_email" name="id_email" placeholder="이메일">
+          <input type="password" id="password" name="password" placeholder="비밀번호">
+          <button type="submit">로그인</button>
+      </div>
+      </form>
 </body>
+
 </html>
