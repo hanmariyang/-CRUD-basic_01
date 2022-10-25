@@ -4,7 +4,10 @@ from . import views
 
 app_name = 'accounts'
 urlpatterns = [
-    path('signup/', views.signup, name='sign_up'),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
+    path('signup/', views.signup, name='sign_up'), # 회원가입
+    path('login/', views.login, name='login'), # 로그인
+    path('logout/', views.logout, name='logout'), # 로그아웃
+    path('delete/', views.delete, name='delete'), # 회원 탈퇴
+    path('profile/edit/<int:id>/', views.profile_edit, name='profile_edit'), #회원 정보 수정
+    path('profile/password/<int:id>/', views.password, name='password'), #비밀번호 변경
 ]

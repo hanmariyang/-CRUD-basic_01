@@ -10,5 +10,8 @@
     <h1>여기는 홈페이지 입니다.</h1>
     <h2>{{ user.username }}님 안녕하세요.</h2>
     <button onclick="location.href='accounts/logout/'">로그아웃</button>
+    <button onclick="location.href='accounts/delete/'">회원탈퇴</button>
+    <button onclick="location.href='accounts/profile/edit/{{ user.id }}/'">회원정보수정</button>
+    <button onclick="location.href='accounts/profile/password/{{ user.id }}/'">비밀번호변경</button>
 </body>
 </html>
