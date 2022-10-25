@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <h1 style="color: white;">체크인 페이지 입니다.</h1>
+    <form action="/accounts/checkin/" method="POST">
+        {% csrf_token %}
+    <input name='email' type="text" style="border: none;"/><button type="submit" style="background-color: red; color: white;">시작하기 ></button>
+    </form>
+</body>
+</html>

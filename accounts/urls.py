@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'), # 회원 탈퇴
     path('profile/edit/<int:id>/', views.profile_edit, name='profile_edit'), #회원 정보 수정
     path('profile/password/<int:id>/', views.password, name='password'), #비밀번호 변경
+    path('checkin/', views.checkin, name='check-in'), # 체크인 페이지
 ]

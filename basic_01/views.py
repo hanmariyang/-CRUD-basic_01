@@ -7,4 +7,4 @@ def home(request):
         if user:
             return render(request, 'home.html')
         else:
-            return redirect('login')
+            return redirect('accounts/checkin/')

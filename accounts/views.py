@@ -1,4 +1,5 @@
 # accounts/views.py
+import email
 from django.shortcuts import render, redirect
 from .models import UserModel
 from django.contrib.auth import get_user_model, authenticate
@@ -102,3 +103,16 @@ def password(request, id): # 비밀번호
                 return redirect('/')
         else:
             return render(request, 'profile_password.html', {'error':'비밀번호가 일치하지 않습니다'})
+
+def checkin(request):
+    if request.method == 'GET':
+        return render(request, 'checkin.html')
+
+    if request.method == 'POST':
+        check_email = request.POST.get('email', '')
+        try:
+            _email = UserModel.objects.get(email=check_email)
+            if _email:
+                return render(request, 'login.html')
+        except:
+            return render(request, 'signup.html')
