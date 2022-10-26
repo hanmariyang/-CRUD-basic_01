@@ -6,7 +6,7 @@ from accounts.models import UserModel
 class Feed(models.Model):
     title = models.CharField(max_length=30)
     category = models.CharField(max_length=30)
-    image = models.ImageField(default="default.png", upload_to="feed_images/")
+    image = models.ImageField(default="", upload_to="feed_images/")
     content = models.TextField()
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     like_authors = models.ManyToManyField(UserModel, related_name='like_posts')
