@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # APP
     'accounts',
+    'contents',
 ]
 
 MIDDLEWARE = [
