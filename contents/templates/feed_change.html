@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+</head>
+
+<body>
+    <form action="{% url 'contents:feed_change' feed.id %}" method="POST" enctype="multipart/form-data"> <!-- enctype = 이미지를 보내기위한 속성값 -->
+    {% csrf_token %}
+    <div style="display: flex; flex-direction: column;" >
+        <h1>게시글 수정 페이지</h1>
+        <div>제목: <input type="text" name="title" value="{{ feed.title }}" /></div>
+        <div>카테고리: <input type="text" name="category" value="{{ feed.category }}" /></div>
+        <div>사진 <input type="file" name="feed_image" placeholder="사진" value="image" required /></div> <!-- required = 필수요소 지정 -->
+        <textarea type="text" name="content" cols="20" rows="10">{{ feed.content }}</textarea>
+
+        <button type="submit">작성하기</button>
+    </div>
+    </form>
+</body>
+</html>

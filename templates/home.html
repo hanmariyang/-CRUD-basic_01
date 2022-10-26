@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,5 +15,20 @@
     <button onclick="location.href='accounts/delete/'">회원탈퇴</button>
     <button onclick="location.href='accounts/profile/edit/{{ user.id }}/'">회원정보수정</button>
     <button onclick="location.href='accounts/profile/password/{{ user.id }}/'">비밀번호변경</button>
+
+    <button onclick="location.href='contents/upload/'">글쓰기</button>
+
+    {% for feed in feeds %}
+    <div style="display: flex; flex-direction: column;">
+        <div>{{ feed.id }}</div>
+        <div>{{ feed.category }} / {{ feed.title }} 
+            <button onclick="location.href='contents/update/{{ feed.id }}/'">수정</button>
+            <button onclick="location.href='contents/delete/{{ feed.id }}/'">삭제</button>
+        </div>
+        <div><img style="width: 300px; min-width: 300px; height: 280px; min-height: 280px; object-fit: cover;" src="{% get_media_prefix %}{{ feed.image }}/"></div>
+        <div>{{ feed.user.nickname }}</div>
+        <div>{{ feed.created_at | timesince }} 전</div>
+    </div>
+    {% endfor %}
 </body>
 </html>
