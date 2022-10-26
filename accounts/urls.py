@@ -1,6 +1,8 @@
 # accounts/urls.py
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'accounts'
 urlpatterns = [
@@ -11,4 +13,4 @@ urlpatterns = [
     path('profile/edit/<int:id>/', views.profile_edit, name='profile_edit'), #회원 정보 수정
     path('profile/password/<int:id>/', views.password, name='password'), #비밀번호 변경
     path('checkin/', views.checkin, name='check-in'), # 체크인 페이지
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # static 경로 설정
