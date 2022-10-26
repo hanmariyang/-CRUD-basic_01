@@ -115,9 +115,9 @@ def checkin(request):
 
         _email = UserModel.objects.filter(email=check_email)
         if _email:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {'email':check_email})
         else:
-            return render(request, 'signup.html')
+            return render(request, 'signup.html', {'email':check_email})
 
 
 

@@ -12,5 +12,7 @@
         {% csrf_token %}
     <input name='email' type="text" style="border: none;"/><button type="submit" style="background-color: red; color: white;">시작하기 ></button>
     </form>
+    <button type="button" onclick="location.href='{% url "accounts:login" %}'" style="background-color: red; color: white;">로그인페이지</button>
+    <button type="button" onclick="location.href='{% url "accounts:sign_up" %}'" style="background-color: red; color: white;">회원가입</button>
 </body>
 </html>

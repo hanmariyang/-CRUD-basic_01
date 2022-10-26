@@ -14,12 +14,12 @@
     <form action="{% url 'accounts:sign_up' %}" method="POST">
       {% csrf_token %}
       <div style="display: flex; flex-direction: column;">
-          <input type="email" id="email" name="email" placeholder="이메일">
+          <input type="email" id="email" name="email" placeholder="이메일" value="{{ email }}">
           <input type="text" id="username" name="username" placeholder="성명">
           <input type="text" id="nickname" name="nickname" placeholder="사용자 이름">
           <input type="password" id="password" name="password" placeholder="비밀번호">
           <input type="password" id="password2" name="password2" placeholder="비밀번호 확인">
-          <button type="submit"">가입하기</button>
+          <button type="submit">가입하기</button>
       </div>
       </form>
 </body>
