@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model, authenticate
 from django.contrib import auth
 from django.contrib.auth.hashers import check_password
 
+from django.contrib.auth.decorators import login_required
+
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html')
@@ -116,4 +118,26 @@ def checkin(request):
             return render(request, 'login.html')
         else:
             return render(request, 'signup.html')
+
+
+
+@login_required
+def user_follow(request, id):
+    me = request.user
+    click_user = UserModel.objects.get(id=id)
+    if me in click_user.followee.all():
+        click_user.followee.remove(request.user)
+    else:
+        click_user.followee.add(request.user)
+    return redirect(request.META['HTTP_REFERER'])
+
+
+@login_required
+def user_view(request):
+    if request.method == 'GET':
+
+        # 사용자를 불러오기, exclude와 request.user.username 를 사용해서 '로그인 한 사용자'를 제외하기
+        user_list = UserModel.objects.all().exclude(email=request.user.email)
+        return render(request, 'follow.html', { 'user_list': user_list })
+
 
