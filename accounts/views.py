@@ -110,9 +110,10 @@ def checkin(request):
 
     if request.method == 'POST':
         check_email = request.POST.get('email', '')
-        try:
-            _email = UserModel.objects.get(email=check_email)
-            if _email:
-                return render(request, 'login.html')
-        except:
+
+        _email = UserModel.objects.filter(email=check_email)
+        if _email:
+            return render(request, 'login.html')
+        else:
             return render(request, 'signup.html')
+

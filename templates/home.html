@@ -9,6 +9,7 @@
 <body>
     <h1>여기는 홈페이지 입니다.</h1>
     <h2>{{ user.username }}님 안녕하세요.</h2>
+    <h3>{{ user.nickname }} / {{ user.email }}</h3>
     <button onclick="location.href='accounts/logout/'">로그아웃</button>
     <button onclick="location.href='accounts/delete/'">회원탈퇴</button>
     <button onclick="location.href='accounts/profile/edit/{{ user.id }}/'">회원정보수정</button>
