@@ -15,7 +15,7 @@
         <div>{{ ul.email }}</div>
         <div>팔로워  : {{ ul.followee.count }} 명 /  팔로우 : {{ ul.follow.count }} 명</div>
         {% if ul in user.follow.all %}
-        <a href= "{% url 'accounts:follow' ul.id %}">[팔로잉]</a>
+        <a href= "{% url 'accounts:follow' ul.id %}">[팔로우 취소]</a>
         {% else %}
         <a href= "{% url 'accounts:follow' ul.id %}">[팔로우]</a>
         {% endif %}
