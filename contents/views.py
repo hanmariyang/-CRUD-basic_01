@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from contents.models import Feed, Comment
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 @login_required
@@ -86,3 +87,32 @@ def delete_comment(request, id):
             return redirect('/')
         
         
+def search(request): 
+    q = request.POST.get('q', "")
+    search_menu = request.POST.get('search_menu', "")
+    print(search_menu)
+    if search_menu == '1':
+        query = Q(title__icontains=q)
+        searched = Feed.objects.filter(query)
+
+    elif search_menu == '2':
+        query = Q(content__icontains=q)
+        searched = Feed.objects.filter(query)
+
+    elif search_menu == '3':
+        query = Q(user__nickname__icontains=q)
+        searched = Feed.objects.filter(query)
+
+    
+    elif search_menu == '4':
+        query = Q(category__icontains=q)
+        searched = Feed.objects.filter(query)
+    else :
+        return redirect('/')
+    
+    
+    context = {
+        'searched':searched,
+        'q': q
+        }
+    return render(request, 'search.html', context)
